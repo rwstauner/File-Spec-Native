@@ -27,7 +27,7 @@ my ($win32_path, $file_path);
   foreign_file(Win32 => $win32_path)->as_foreign("Native");
 
   # or to build a file-spec dynamically (possibly taking the type from input):
-  $type = get_requested_file_spec; # can return "Native"
+  my $type = get_requested_file_spec(); # can return "Native"
   foreign_file($type => $file_path);
 
   # having $type be "Native" is an alternative to having to do:
