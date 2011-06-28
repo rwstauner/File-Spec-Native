@@ -42,7 +42,7 @@ the current, native OS format (automatically detected by L<File::Spec>).
 
 For example: L<Path::Class/as_foreign> (as of version 0.24)
 allows you to translate a L<Path::Class> object from one OS format to another.
-However, there is no way way to specify that you want to translate the path into
+However, there is no way to specify that you want to translate the path into
 the current, native OS format without guessing at what that format is
 (which may include peeking into C<@File::Spec::ISA>).
 
