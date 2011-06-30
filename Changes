@@ -2,6 +2,8 @@ Revision history for File-Spec-Native
 
 {{$NEXT}}
 
+1.002     2011-06-30T02:33:05Z
+
   - Fix test for non-unix
 
 1.001     2011-06-28T16:50:39Z
