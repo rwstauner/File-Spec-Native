@@ -2,7 +2,11 @@ language: perl
 perl:
   - "5.20"
   - "5.8"
-  - "5.6"
+
+matrix:
+  include:
+    - perl: "5.6"
+      env: AUTHOR_TESTING=0 COVERAGE=0
 
 env:
   global:
