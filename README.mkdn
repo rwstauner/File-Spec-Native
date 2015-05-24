@@ -1,0 +1,88 @@
+# NAME
+
+File::Spec::Native - Use native OS implementation of File::Spec from a subclass
+
+# VERSION
+
+version 1.004
+
+# SYNOPSIS
+
+    # This serves little purpose on its own but can be useful in some situations
+
+    # For example:
+    use Path::Class 0.24;
+
+    # convert foreign file type into native type
+    # without having to know what the current OS is
+    foreign_file(Win32 => $win32_path)->as_foreign("Native");
+
+    # or to build a file-spec dynamically (possibly taking the type from input):
+    my $type = get_requested_file_spec(); # can return "Native"
+    foreign_file($type => $file_path);
+
+    # having $type be "Native" is an alternative to having to do:
+    my $file = $type ? foreign_file($type, $file_path) : file($file_path);
+
+# DESCRIPTION
+
+This module is a stupid hack to make the default [File::Spec](https://metacpan.org/pod/File::Spec) behavior
+available from a subclass.  This can be useful when using another module
+that expects a subclass of [File::Spec](https://metacpan.org/pod/File::Spec) but you want to use
+the current, native OS format (automatically detected by [File::Spec](https://metacpan.org/pod/File::Spec)).
+
+For example: ["as\_foreign" in Path::Class](https://metacpan.org/pod/Path::Class#as_foreign) (as of version 0.24)
+allows you to translate a [Path::Class](https://metacpan.org/pod/Path::Class) object from one OS format to another.
+However, there is no way to specify that you want to translate the path into
+the current, native OS format without guessing at what that format is
+(which may include peeking into `@File::Spec::ISA`).
+
+This module `@ISA` [File::Spec](https://metacpan.org/pod/File::Spec).
+
+# SEE ALSO
+
+- [File::Spec](https://metacpan.org/pod/File::Spec)
+- [Path::Class](https://metacpan.org/pod/Path::Class)
+- [https://rt.cpan.org/Ticket/Display.html?id=49721](https://rt.cpan.org/Ticket/Display.html?id=49721)
+
+# SUPPORT
+
+## Perldoc
+
+You can find documentation for this module with the perldoc command.
+
+    perldoc File::Spec::Native
+
+## Websites
+
+The following websites have more information about this module, and may be of help to you. As always,
+in addition to those websites please use your favorite search engine to discover more resources.
+
+- MetaCPAN
+
+    A modern, open-source CPAN search engine, useful to view POD in HTML format.
+
+    [http://metacpan.org/release/File-Spec-Native](http://metacpan.org/release/File-Spec-Native)
+
+## Bugs / Feature Requests
+
+Please report any bugs or feature requests by email to `bug-file-spec-native at rt.cpan.org`, or through
+the web interface at [http://rt.cpan.org/NoAuth/ReportBug.html?Queue=File-Spec-Native](http://rt.cpan.org/NoAuth/ReportBug.html?Queue=File-Spec-Native). You will be automatically notified of any
+progress on the request by the system.
+
+## Source Code
+
+[https://github.com/rwstauner/File-Spec-Native](https://github.com/rwstauner/File-Spec-Native)
+
+    git clone https://github.com/rwstauner/File-Spec-Native.git
+
+# AUTHOR
+
+Randy Stauner <rwstauner@cpan.org>
+
+# COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2011 by Randy Stauner.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
